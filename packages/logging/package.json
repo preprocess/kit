@@ -1,0 +1,31 @@
+{
+  "name": "@preprocess/logging",
+  "version": "0.0.0",
+  "private": true,
+  "description": "evlog setup, drains and redaction defaults for Preprocess, Inc. products.",
+  "author": "Preprocess, Inc.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/preprocess/kit",
+    "directory": "packages/logging"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@preprocess/config": "workspace:*",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.3"
+  }
+}

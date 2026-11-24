@@ -1,0 +1,38 @@
+# Installable preview builds of the published packages for every pull request
+# and every push to main, through pkg.pr.new. A product tries an unreleased
+# kit change by installing the URL the pkg.pr.new comment lists.
+
+name: Preview packages
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm build
+
+      - run:
+          pnpm dlx pkg-pr-new publish --pnpm --compact ./packages/ui
+          ./packages/config ./packages/runmode

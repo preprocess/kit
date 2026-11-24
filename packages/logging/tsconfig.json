@@ -1,0 +1,8 @@
+{
+  "extends": "@preprocess/config/tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "moduleResolution": "Bundler"
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@preprocess/auth",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Better Auth setup and Preprocess, Inc. extensions: organizations, fixed roles, API keys, SSO and SCIM.",
+  "author": "Preprocess, Inc.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/preprocess/kit",
+    "directory": "packages/auth"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@preprocess/config": "workspace:*",
+    "eslint": "^9.32.0",
+    "typescript": "^5.9.3"
+  }
+}
