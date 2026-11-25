@@ -38,6 +38,9 @@ import {
   ArrowUp,
   ArrowDownIcon as ArrowDown,
   Search,
+  FileIcon,
+  MinusIcon,
+  CircleAlert,
   Loader,
   Users,
   Lock,
@@ -109,7 +112,7 @@ export type IconName =
   | "home" | "message-circle" | "inbox"
   | "pencil" | "scaling" | "skip-forward" | "corner-down-right" | "corner-down-left"
   | "panel-left" | "panel-right" | "panel-left-collapsed" | "panel-right-collapsed" | "chevrons-up-down" | "more-horizontal" | "more-vertical" | "calendar" | "folder"
-  | "sliders-horizontal" | "info";
+  | "sliders-horizontal" | "info" | "file" | "minus" | "circle-alert";
 
 export const defaultIcons: Record<IconName, IconComponent> = {
   "chevron-right": ChevronRight,
@@ -173,6 +176,9 @@ export const defaultIcons: Record<IconName, IconComponent> = {
   "folder": Folder,
   "sliders-horizontal": SlidersHorizontal,
   "info": Info,
+  "file": FileIcon,
+  "minus": MinusIcon,
+  "circle-alert": CircleAlert,
 };
 
 const IconContext = createContext<Record<IconName, IconComponent> | null>(null);
