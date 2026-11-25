@@ -325,7 +325,7 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
             strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="shrink-0 text-muted-foreground transition-colors duration-80 group-hover:text-foreground"
+            className="icon-stroke shrink-0 text-muted-foreground transition-colors duration-80 group-hover:text-foreground"
           >
             <path d="M6 9l6 6 6-6" />
           </svg>

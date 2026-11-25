@@ -476,7 +476,7 @@ function FieldControls({
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="transition-colors duration-80"
+          className="icon-stroke transition-colors duration-80"
         >
           <path d="M6 9l6 6 6-6" />
         </svg>

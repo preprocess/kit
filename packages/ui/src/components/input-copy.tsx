@@ -242,6 +242,7 @@ const InputCopy = forwardRef<HTMLDivElement, InputCopyProps>(
             >
               <span className="flex items-center justify-center">
                 <svg
+                  className="icon-stroke"
                   width={14}
                   height={14}
                   viewBox="2 4 20 16"
@@ -280,6 +281,7 @@ const InputCopy = forwardRef<HTMLDivElement, InputCopyProps>(
             >
               <span className="flex items-center justify-center">
                 <svg
+                  className="icon-stroke"
                   width={14}
                   height={14}
                   viewBox="2 4 20 16"
