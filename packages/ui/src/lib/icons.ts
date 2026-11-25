@@ -11,11 +11,13 @@ import {
   ArrowLeft as LucideArrowLeft,
   ArrowRight as LucideArrowRight,
   ArrowUp as LucideArrowUp,
+  ArrowUpRight as LucideArrowUpRight,
   BadgeCheck as LucideBadgeCheck,
   Bell as LucideBell,
   BookOpen as LucideBookOpen,
   Bookmark as LucideBookmark,
   Bot as LucideBot,
+  Braces as LucideBraces,
   Brain as LucideBrain,
   Building2 as LucideBuilding2,
   Calendar as LucideCalendar,
@@ -44,11 +46,13 @@ import {
   Eye as LucideEye,
   EyeOff as LucideEyeOff,
   File as LucideFile,
+  FileText as LucideFileText,
   Folder as LucideFolder,
   Funnel as LucideFunnel,
   Gauge as LucideGauge,
   Globe as LucideGlobe,
   Handshake as LucideHandshake,
+  Hash as LucideHash,
   Headset as LucideHeadset,
   Heart as LucideHeart,
   History as LucideHistory,
@@ -71,6 +75,7 @@ import {
   Monitor as LucideMonitor,
   Moon as LucideMoon,
   Newspaper as LucideNewspaper,
+  OctagonAlert as LucideOctagonAlert,
   Orbit as LucideOrbit,
   Paintbrush as LucidePaintbrush,
   Palette as LucidePalette,
@@ -101,6 +106,8 @@ import {
   Star as LucideStar,
   Sun as LucideSun,
   Tags as LucideTags,
+  Terminal as LucideTerminal,
+  TextAlignStart as LucideTextAlignStart,
   ThumbsDown as LucideThumbsDown,
   ThumbsUp as LucideThumbsUp,
   TrendingUp as LucideTrendingUp,
@@ -156,10 +163,12 @@ export const ArrowDownIcon = icon(LucideArrowDown);
 export const ArrowLeft = icon(LucideArrowLeft);
 export const ArrowRight = icon(LucideArrowRight);
 export const ArrowUp = icon(LucideArrowUp);
+export const ArrowUpRight = icon(LucideArrowUpRight);
 export const BadgeCheck = icon(LucideBadgeCheck);
 export const Bell = icon(LucideBell);
 export const BookOpen = icon(LucideBookOpen);
 export const Bookmark = icon(LucideBookmark);
+export const Braces = icon(LucideBraces);
 export const Brain = icon(LucideBrain);
 export const Calendar = icon(LucideCalendar);
 export const ChartLine = icon(LucideChartLine);
@@ -187,11 +196,13 @@ export const DownloadIcon = icon(LucideDownload);
 export const Eye = icon(LucideEye);
 export const EyeSlash = icon(LucideEyeOff);
 export const FileIcon = icon(LucideFile);
+export const FileText = icon(LucideFileText);
 export const FilterIcon = icon(LucideFunnel);
 export const Folder4 = icon(LucideFolder);
 export const Gauge = icon(LucideGauge);
 export const Globe = icon(LucideGlobe);
 export const Handshake = icon(LucideHandshake);
+export const Hash = icon(LucideHash);
 export const Headset = icon(LucideHeadset);
 export const Heart = icon(LucideHeart);
 export const History = icon(LucideHistory);
@@ -217,6 +228,7 @@ export const Moon = icon(LucideMoon);
 export const MoreHorizontalIcon = icon(LucideEllipsis);
 export const MoreVerticalIcon = icon(LucideEllipsisVertical);
 export const Newspaper = icon(LucideNewspaper);
+export const OctagonAlert = icon(LucideOctagonAlert);
 export const OctagonXIcon = icon(LucideCircleX);
 export const Office = icon(LucideBuilding2);
 export const OpenRectArrowOut = icon(LucideLogOut);
@@ -253,6 +265,8 @@ export const SquareLibrary = icon(LucideLibrary);
 export const Star = icon(LucideStar);
 export const Sun = icon(LucideSun);
 export const Tags = icon(LucideTags);
+export const Terminal = icon(LucideTerminal);
+export const TextAlignStart = icon(LucideTextAlignStart);
 export const ThumbsDown = icon(LucideThumbsDown);
 export const ThumbsUp = icon(LucideThumbsUp);
 export const TrendingUp = icon(LucideTrendingUp);
