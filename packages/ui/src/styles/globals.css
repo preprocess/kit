@@ -15,12 +15,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* WOFF2 first, the TTF for apps that only host that. `optional` never swaps
+   fonts mid-view: preload the WOFF2 and it is ready before first paint. */
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/InterVariable.ttf") format("truetype");
+  src:
+    url("/fonts/InterVariable.woff2") format("woff2"),
+    url("/fonts/InterVariable.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
-  font-display: swap;
+  font-display: optional;
 }
 
 /* The real italic, from the same Inter 4.0 release. Without it, the browser
@@ -28,10 +32,12 @@
    set italic text download it. */
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/InterVariable-Italic.ttf") format("truetype");
+  src:
+    url("/fonts/InterVariable-Italic.woff2") format("woff2"),
+    url("/fonts/InterVariable-Italic.ttf") format("truetype");
   font-weight: 100 900;
   font-style: italic;
-  font-display: swap;
+  font-display: optional;
 }
 
 /* ============================================================================
