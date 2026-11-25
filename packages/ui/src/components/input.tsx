@@ -28,7 +28,10 @@ const inputClasses = [
   "file:mr-2 file:cursor-pointer file:border-0 file:bg-transparent file:p-0 file:font-[inherit] file:text-[length:inherit] file:text-foreground",
 ];
 
-interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+interface InputProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "size"
+> {
   /** Pins the field to one step of the size ladder (default 36px, compact
    *  28px). Omitted, it follows the surrounding SizeProvider. */
   size?: SizeVariant;
@@ -65,8 +68,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // max, through the native setter React's value tracking reads.
         const min = el.min === "" ? -Infinity : Number(el.min);
         const max = el.max === "" ? Infinity : Number(el.max);
-        const next = Math.min(max, Math.max(min, (Number(el.value) || 0) + direction));
-        Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")?.set?.call(el, String(next));
+        const next = Math.min(
+          max,
+          Math.max(min, (Number(el.value) || 0) + direction),
+        );
+        Object.getOwnPropertyDescriptor(
+          HTMLInputElement.prototype,
+          "value",
+        )?.set?.call(el, String(next));
       } else if (direction === 1) el.stepUp();
       else el.stepDown();
       // stepUp/stepDown skip the value setter React tracks, so this input
@@ -105,7 +114,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             // 4 + 28 + 28 + 8, 2 + 24 + 24 + 4 compact.
             compact ? "pr-[54px]" : "pr-[68px]",
           ],
-          className
+          className,
         )}
         style={{ fontVariationSettings: fontWeights.normal, ...style }}
         onChange={(e) => {
@@ -128,7 +137,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               "pointer-events-none absolute top-1/2 -translate-y-1/2 transition-colors duration-80",
               compact ? "left-2.5" : "left-3",
-              hasFile ? "text-foreground" : "text-muted-foreground"
+              hasFile ? "text-foreground" : "text-muted-foreground",
             )}
           />
           {input}
@@ -153,7 +162,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               "group/step flex shrink-0 cursor-pointer items-center justify-center text-muted-foreground outline-none",
               "transition-colors duration-80 hover:bg-hover hover:text-foreground",
               "disabled:pointer-events-none",
-              compact ? "size-6" : "size-7"
+              compact ? "size-6" : "size-7",
             )}
             style={{ borderRadius: stepRadius }}
           >
@@ -163,7 +172,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       };
 
       return (
-        <span data-slot="input-number" className="relative block w-full min-w-0">
+        <span
+          data-slot="input-number"
+          className="relative block w-full min-w-0"
+        >
           {input}
           <span
             className="absolute inset-y-0 flex items-center"
@@ -177,7 +189,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     }
 
     return input;
-  }
+  },
 );
 
 Input.displayName = "Input";
