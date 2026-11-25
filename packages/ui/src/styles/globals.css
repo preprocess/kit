@@ -614,15 +614,20 @@ html:active-view-transition-type(page-back)::view-transition-new(t-page) {
 }
 
 /* Local: icons keep one stroke weight on screen at every size, however they
-   are sized. 0.9375px is what Fluid Functionalism's own 1.5 stroke draws at
-   on its 15px icons, and what #lib/icons' 1.25 draws at its 18px default.
+   are sized: --icon-stroke. 0.9375px is what Fluid Functionalism's own 1.5
+   stroke draws at on its 15px icons, and what #lib/icons' 1.25 draws at its
+   18px default.
    Fluid components pass a heavier strokeWidth on hover, selection, and focus;
    CSS outranks the SVG attribute, so the weight holds. Glyphs Fluid draws
    inline (select and combobox carets, the copy field's check and cross)
    carry .icon-stroke to take the same weight. */
+:root {
+  --icon-stroke: 0.9375px;
+}
+
 svg.lucide,
 svg.icon-stroke {
-  stroke-width: 0.9375px;
+  stroke-width: var(--icon-stroke);
 }
 
 svg.lucide *,
