@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "syncedAt": "2026-10-24",
+  "syncedAt": "2026-11-25",
   "fluid": {
     "registryUrl": "https://www.fluidfunctionalism.com/r/registry.json",
     "repository": "https://github.com/mickadesign/fluid-functionalism",
@@ -49,7 +49,6 @@
       "src/components/slider.tsx",
       "src/components/switch.tsx",
       "src/components/table.tsx",
-      "src/components/tabs-subtle.tsx",
       "src/components/tabs.tsx",
       "src/components/textarea.tsx",
       "src/components/thinking-indicator.tsx",
@@ -86,24 +85,33 @@
       "src/components/sidebar-core.tsx": "SidebarTrigger shows the panel icon while open and the collapsed (inset handle) icon while collapsed, instead of one icon in both states.",
       "src/components/card.tsx": "next/link replaced by a plain anchor so the package stays router-agnostic.",
       "src/components/file-thumbnail.tsx": "PDF.js worker is bundled through a Vite ?url import instead of loaded from jsDelivr at runtime.",
-      "src/hooks/use-fluid-hover.ts": "holdInGaps option (keeps the highlight while the pointer is between items); used by HoverScope on the marketing nav.",
+      "src/hooks/use-fluid-hover.ts": "holdInGaps option: without nearest, a pointer in empty space between items keeps the current highlight instead of putting it out; used by HoverScope on the marketing nav.",
       "src/lib/shape-context.tsx": "The pill shape keeps inputs on the rounded radius (rounded-lg); buttons, rows and containers stay pill.",
       "src/components/select.tsx": "Popup rows sit 4px apart (gap-1 on the rows container), like the dropdown. The inline caret carries .icon-stroke, so it draws the shared icon stroke (globals.css) instead of a 2 stroke.",
       "src/components/dropdown.tsx": "Popup rows sit 4px apart (gap-1 on the rows container), the spacing every list in the app uses. With a pinned search, the list fades below it (scroll-fade-under-search in globals.css) instead of dropping the fade.",
       "src/components/combobox.tsx": "The inline caret carries .icon-stroke, so it draws the shared icon stroke (globals.css) instead of a 2 stroke.",
       "src/components/input-copy.tsx": "The inline check and cross carry .icon-stroke, so they draw the shared icon stroke (globals.css) instead of a 2 stroke.",
       "src/components/menu-item.tsx": "Optional `detail` prop: a muted caption after the label (filter value counts).",
-      "src/components/dropdown-search.tsx": "Optional `hideIcon` and `trailing` props, for the Linear-style filter field (no magnifier, a shortcut key on the right)."
+      "src/components/dropdown-search.tsx": "Optional `hideIcon` and `trailing` props, for the Linear-style filter field (no magnifier, a shortcut key on the right).",
+      "src/components/command-menu.tsx": "Imports Tabs and TabsItem from #components/tabs (upstream f4867a54 renamed TabsSubtle to Tabs) until command-menu itself is synced; the rest of the file is still at the commit above."
     },
     "stylesheet": "src/styles/globals.css follows the Fluid site app/globals.css at the same commit, minus site-only sections.",
     "partialSync": {
       "commit": "1f716642a455c7a66e4cc7087c917dbe109f7943",
       "files": [
         "src/components/field.tsx",
+        "src/components/fluid-hover-highlight.tsx",
         "src/components/input.tsx",
-        "src/components/textarea.tsx"
+        "src/components/tabs.tsx",
+        "src/components/textarea.tsx",
+        "src/hooks/use-fluid-hover.ts",
+        "src/hooks/use-merge-split.tsx",
+        "src/lib/size-context.tsx"
       ],
-      "note": "Input, Field and Textarea taken from this later upstream commit ahead of a full sync; the rest of the registry is still at the commit above."
+      "note": "Taken from this later upstream commit ahead of a full sync: Input, Field and Textarea; Tabs (the pill design TabsSubtle was) with the use-fluid-hover item it needs; use-merge-split and size-context, whose differences were non-visual. The rest of the registry is still at the commit above."
+    },
+    "removedUpstream": {
+      "src/components/tabs-subtle.tsx": "Upstream f4867a54 (changelog Tabs #96) removed the segmented Tabs and renamed TabsSubtle to Tabs; tabs.tsx is that Tabs now, and tabs-subtle.tsx is gone."
     }
   },
   "otherComponents": {

@@ -6,6 +6,7 @@ import {
   useReducedMotion,
   type Transition,
 } from "motion/react";
+import type { ReactNode } from "react";
 import { cn } from "#utils";
 import { spring } from "#lib/springs";
 import type { ItemRect, UseFluidHoverReturn } from "#hooks/use-fluid-hover";
@@ -54,9 +55,15 @@ interface HighlightFromRect {
 }
 
 export type FluidHoverHighlightProps = (HighlightFromHook | HighlightFromRect) & {
-  /** Where a fresh session fades in from. A dropdown passes its checked row,
-   *  a nav menu its active route. Defaults to the rect itself. */
+  /** Where a fresh session fades in from. Defaults to the rect itself, and
+   *  that is right for a list with a selected item: the highlight appears on
+   *  the item under the pointer, it does not slide out of the selected one.
+   *  For a fill the hover extends (the calendar's range start). */
   from?: ItemRect | null;
+  /** `false` starts a fresh session opaque instead of fading in: for a
+   *  `from` under a filled item (the calendar's range start), so the
+   *  highlight reads as sliding out of it. */
+  fadeIn?: boolean;
   /** Radius, z-index, anything else. Merged onto
    *  `absolute bg-hover pointer-events-none`. */
   className?: string;
@@ -64,6 +71,15 @@ export type FluidHoverHighlightProps = (HighlightFromHook | HighlightFromRect) &
    *  to the new rect with no travel (a layout reflow that moved the rows
    *  underneath, not a hover change). The opacity fade is always 0.08s. */
   transition?: Transition | false;
+  /** Every frame the highlight moves or fades: where it is now (container
+   *  coordinates) and how opaque. For things that should follow the fill
+   *  itself rather than its target, like dividers that hide only once it
+   *  covers them. */
+  onFrame?: (box: { y: number; height: number; opacity: number }) => void;
+  /** Rides the fill: positioned against it, moved and faded with it. For a
+   *  mark that belongs to the lit item and should glide there with the
+   *  fill instead of blinking from item to item (DataTable's row box). */
+  children?: ReactNode;
 };
 
 const fade: Transition = { duration: 0.08 };
@@ -105,7 +121,7 @@ export function resolveHighlightSource(
 }
 
 export function FluidHoverHighlight(props: FluidHoverHighlightProps) {
-  const { from, className, transition } = props;
+  const { from, fadeIn = true, className, transition, onFrame, children } = props;
   const { rect, session } = resolveHighlightSource(props);
   // Reads the OS media query directly, so an installed copy honours reduced
   // motion without the app wrapping its tree in MotionConfig. A wrapped app
@@ -127,11 +143,25 @@ export function FluidHoverHighlight(props: FluidHoverHighlightProps) {
             "pointer-events-none absolute left-0 top-0 bg-hover",
             className
           )}
-          initial={{ opacity: 0, ...toTarget(from ?? rect) }}
+          initial={{ opacity: fadeIn ? 0 : 1, ...toTarget(from ?? rect) }}
           animate={{ opacity: 1, ...toTarget(rect) }}
           exit={{ opacity: 0, transition: spring.fast.exit }}
           transition={resolveHighlightTransition(transition, reduceMotion)}
-        />
+          onUpdate={
+            onFrame
+              ? (latest) => {
+                  const n = (v: unknown, d: number) => (typeof v === "number" ? v : d);
+                  onFrame({
+                    y: n(latest.y, rect.top),
+                    height: n(latest.height, rect.height),
+                    opacity: n(latest.opacity, 1),
+                  });
+                }
+              : undefined
+          }
+        >
+          {children}
+        </motion.div>
       )}
     </AnimatePresence>
   );
