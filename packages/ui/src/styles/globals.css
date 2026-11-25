@@ -613,11 +613,17 @@ html:active-view-transition-type(page-back)::view-transition-new(t-page) {
   --animate-spinner: spin 0.8s steps(8) infinite;
 }
 
-/* Local: icons keep one stroke weight. Fluid components pass a heavier
-   strokeWidth on hover, selection, and focus; CSS outranks the SVG attribute,
-   so every Lucide glyph stays at the 1.25 that #lib/icons sets. */
+/* Local: icons keep one stroke weight on screen at every size, however they
+   are sized. 0.9375px is what Fluid Functionalism's own 1.5 stroke draws at
+   on its 15px icons, and what #lib/icons' 1.25 draws at its 18px default.
+   Fluid components pass a heavier strokeWidth on hover, selection, and focus;
+   CSS outranks the SVG attribute, so the weight holds. */
 svg.lucide {
-  stroke-width: 1.25;
+  stroke-width: 0.9375px;
+}
+
+svg.lucide * {
+  vector-effect: non-scaling-stroke;
 }
 
 /* Local: unstyled text starts on the body role (13px / 20px) rather than the
