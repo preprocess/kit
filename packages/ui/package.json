@@ -19,6 +19,7 @@
     "LICENSE"
   ],
   "exports": {
+    "./assets/*": "./src/assets/*",
     "./components/accordion": "./src/components/accordion.tsx",
     "./components/ask-user-questions": "./src/components/ask-user-questions.tsx",
     "./components/avatar": "./src/components/avatar.tsx",
@@ -42,6 +43,7 @@
     "./components/dropdown-search": "./src/components/dropdown-search.tsx",
     "./components/dropdown-sub": "./src/components/dropdown-sub.tsx",
     "./components/empty": "./src/components/empty.tsx",
+    "./components/field": "./src/components/field.tsx",
     "./components/file-thumbnail": "./src/components/file-thumbnail.tsx",
     "./components/fluid-hover-highlight": "./src/components/fluid-hover-highlight.tsx",
     "./components/hover-card": "./src/components/hover-card.tsx",
@@ -97,7 +99,6 @@
     "./lib/type-scale": "./src/lib/type-scale.ts",
     "./lib/utils": "./src/lib/utils.ts",
     "./licenses/pdfjs-apache-2.0.txt": "./licenses/pdfjs-apache-2.0.txt",
-    "./assets/*": "./src/assets/*",
     "./styles.css": "./src/styles/globals.css"
   },
   "imports": {
