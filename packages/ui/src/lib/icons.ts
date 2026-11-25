@@ -26,10 +26,13 @@ import {
   ChevronRight as LucideChevronRight,
   ChevronsUpDown as LucideChevronsUpDown,
   Circle as LucideCircle,
+  CircleAlert as LucideCircleAlert,
   CircleCheck as LucideCircleCheck,
   CircleX as LucideCircleX,
   Clock as LucideClock,
   Code as LucideCode,
+  Cog as LucideCog,
+  Coins as LucideCoins,
   Columns2 as LucideColumns2,
   Compass as LucideCompass,
   Copy as LucideCopy,
@@ -84,12 +87,14 @@ import {
   Redo2 as LucideRedo2,
   Rocket as LucideRocket,
   RotateCcw as LucideRotateCcw,
+  Scale as LucideScale,
   Scaling as LucideScaling,
   ScanText as LucideScanText,
   Search as LucideSearch,
   Server as LucideServer,
   Settings as LucideSettings,
   Shield as LucideShield,
+  ShoppingCart as LucideShoppingCart,
   SkipForward as LucideSkipForward,
   SlidersHorizontal as LucideSlidersHorizontal,
   SquareArrowOutUpRight as LucideSquareArrowOutUpRight,
@@ -98,6 +103,7 @@ import {
   Tags as LucideTags,
   ThumbsDown as LucideThumbsDown,
   ThumbsUp as LucideThumbsUp,
+  TrendingUp as LucideTrendingUp,
   TriangleAlert as LucideTriangleAlert,
   User as LucideUser,
   Users as LucideUsers,
@@ -166,9 +172,12 @@ export const ChevronRight = icon(LucideChevronRight);
 export const ChevronRightIcon = icon(LucideChevronRight);
 export const ChevronsUpDown = icon(LucideChevronsUpDown);
 export const Circle = icon(LucideCircle);
+export const CircleAlert = icon(LucideCircleAlert);
 export const CircleCheckIcon = icon(LucideCircleCheck);
 export const Clock = icon(LucideClock);
 export const Code = icon(LucideCode);
+export const Cog = icon(LucideCog);
+export const Coins = icon(LucideCoins);
 export const Compass = icon(LucideCompass);
 export const Copy = icon(LucideCopy);
 export const CornerDownLeft = icon(LucideCornerDownLeft);
@@ -225,6 +234,7 @@ export const RectangleHorizontal = icon(LucideRectangleHorizontal);
 export const Redo3 = icon(LucideRedo2);
 export const Rocket = icon(LucideRocket);
 export const RotateCcw = icon(LucideRotateCcw);
+export const Scale = icon(LucideScale);
 export const Scaling = icon(LucideScaling);
 export const ScanText = icon(LucideScanText);
 export const Search = icon(LucideSearch);
@@ -233,6 +243,7 @@ export const Server = icon(LucideServer);
 export const Settings = icon(LucideSettings);
 export const ShareUpRight = icon(LucideSquareArrowOutUpRight);
 export const Shield = icon(LucideShield);
+export const ShoppingCart = icon(LucideShoppingCart);
 export const SidebarLeftIcon = icon(LucidePanelLeft);
 export const SidebarRightIcon = icon(LucidePanelRight);
 export const SkipForward = icon(LucideSkipForward);
@@ -244,6 +255,7 @@ export const Sun = icon(LucideSun);
 export const Tags = icon(LucideTags);
 export const ThumbsDown = icon(LucideThumbsDown);
 export const ThumbsUp = icon(LucideThumbsUp);
+export const TrendingUp = icon(LucideTrendingUp);
 export const TriangleAlertIcon = icon(LucideTriangleAlert);
 export const User = icon(LucideUser);
 export const Users = icon(LucideUsers);

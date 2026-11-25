@@ -239,11 +239,10 @@ const triggerVariants = cva(
   {
     variants: {
       variant: {
-        // Local: filled with the surface tint instead of an outline.
         bordered:
-          "border border-transparent bg-hover text-foreground hover:bg-active",
+          "border border-border bg-transparent text-foreground hover:bg-hover data-[popup-open]:bg-active",
         borderless:
-          "border border-transparent bg-transparent text-foreground hover:bg-hover",
+          "border border-transparent bg-transparent text-foreground hover:bg-hover data-[popup-open]:bg-active",
       },
     },
     defaultVariants: {
