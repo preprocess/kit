@@ -58,6 +58,7 @@
     "./components/menu-item": "./src/components/menu-item.tsx",
     "./components/mobile-drawer": "./src/components/mobile-drawer.tsx",
     "./components/navigation-menu": "./src/components/navigation-menu.tsx",
+    "./components/password-input": "./src/components/password-input.tsx",
     "./components/radio-group": "./src/components/radio-group.tsx",
     "./components/resizable": "./src/components/resizable.tsx",
     "./components/scroll-area": "./src/components/scroll-area.tsx",

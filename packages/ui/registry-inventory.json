@@ -115,6 +115,7 @@
       "src/components/label.tsx",
       "src/components/loading-button.tsx",
       "src/components/navigation-menu.tsx",
+      "src/components/password-input.tsx",
       "src/components/resizable.tsx",
       "src/components/sheet.tsx",
       "src/components/skeleton.tsx",
