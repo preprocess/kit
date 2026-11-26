@@ -6,7 +6,9 @@ import { cn } from "#utils";
 
 /** Brand-green marble for people without a photo. Same in light and dark.
  *  Order matters: marble takes three consecutive entries per seed, and the
- *  list alternates dark and light steps so every triple has contrast. */
+ *  list alternates dark and light steps so every triple has contrast.
+ *  AvatarMarble draws marble's shapes with normal blending instead of the
+ *  library's overlay, so every pixel stays a blend of these colours. */
 export const AVATAR_MARBLE_COLORS = [
   "#14473b",
   "#3a9670",
@@ -63,6 +65,7 @@ function AvatarMarble({
 }) {
   return (
     <BoringAvatar
+      className="[&_path]:mix-blend-normal!"
       colors={[...AVATAR_MARBLE_COLORS]}
       name={name}
       size={size}
