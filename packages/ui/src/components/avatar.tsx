@@ -4,27 +4,20 @@ import BoringAvatar from "boring-avatars";
 
 import { cn } from "#utils";
 
-/** Muted peach / lavender / teal marble on a paper-stone base. Same in light
- *  and dark; no cream or ink. */
+/** Brand-green marble for people without a photo. Same in light and dark.
+ *  Order matters: marble takes three consecutive entries per seed, and the
+ *  list alternates dark and light steps so every triple has contrast. */
 export const AVATAR_MARBLE_COLORS = [
-  "#5c4152",
-  "#b4585d",
-  "#d97f76",
-  "#f7d0a9",
-  "#a1c0ae",
+  "#14473b",
+  "#3a9670",
+  "#cbdfd0",
+  "#34413b",
+  "#91c2aa",
 ] as const;
 
-export function avatarMarbleSeed(person: {
-  id?: string | null;
-  name?: string | null;
-  firstName?: string | null;
-  lastName?: string | null;
-  email?: string | null;
-}): string {
-  const name =
-    person.name?.trim() ||
-    [person.firstName, person.lastName].filter(Boolean).join(" ");
-  return person.id || name || person.email?.trim() || "user";
+/** The marble seed is the user id only; names and emails change. */
+export function avatarMarbleSeed(person: { id: string }): string {
+  return person.id;
 }
 
 function Avatar({
@@ -64,7 +57,7 @@ function AvatarMarble({
   name,
   size = 40,
 }: {
-  /** Stable seed for the marble pattern. Use a person id or full name. */
+  /** Stable seed for the marble pattern: the person's user id. */
   name: string;
   size?: number;
 }) {
@@ -73,39 +66,32 @@ function AvatarMarble({
       colors={[...AVATAR_MARBLE_COLORS]}
       name={name}
       size={size}
+      square={false}
       title={false}
       variant="marble"
     />
   );
 }
 
+/** The marble is the whole fallback; nothing is drawn over it. */
 function AvatarFallback({
   className,
   name,
-  children,
   ...props
-}: AvatarPrimitive.Fallback.Props & {
-  /** Stable seed for the marble pattern. Use a person id or full name. */
+}: Omit<AvatarPrimitive.Fallback.Props, "children"> & {
+  /** Stable seed for the marble pattern: the person's user id. */
   name: string;
 }) {
   return (
     <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        "relative flex size-full items-center justify-center rounded-full text-base text-white group-data-[size=sm]/avatar:text-sm",
+        "pointer-events-none size-full overflow-hidden rounded-full [&_svg]:size-full",
         className,
       )}
       {...props}
     >
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 overflow-hidden rounded-full [&_svg]:size-full"
-      >
-        <AvatarMarble name={name} />
-      </span>
-      {children != null && children !== "" ? (
-        <span className="relative z-10">{children}</span>
-      ) : null}
+      <AvatarMarble name={name} />
     </AvatarPrimitive.Fallback>
   );
 }
