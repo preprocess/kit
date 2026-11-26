@@ -17,6 +17,7 @@ import {
   BookOpen as LucideBookOpen,
   Bookmark as LucideBookmark,
   Bot as LucideBot,
+  Box as LucideBox,
   Braces as LucideBraces,
   Brain as LucideBrain,
   Building2 as LucideBuilding2,
@@ -40,6 +41,7 @@ import {
   Copy as LucideCopy,
   CornerDownLeft as LucideCornerDownLeft,
   CornerDownRight as LucideCornerDownRight,
+  Cpu as LucideCpu,
   Download as LucideDownload,
   Ellipsis as LucideEllipsis,
   EllipsisVertical as LucideEllipsisVertical,
@@ -96,6 +98,7 @@ import {
   Scaling as LucideScaling,
   ScanText as LucideScanText,
   Search as LucideSearch,
+  Send as LucideSend,
   Server as LucideServer,
   Settings as LucideSettings,
   Shield as LucideShield,
@@ -168,6 +171,7 @@ export const BadgeCheck = icon(LucideBadgeCheck);
 export const Bell = icon(LucideBell);
 export const BookOpen = icon(LucideBookOpen);
 export const Bookmark = icon(LucideBookmark);
+export const Box = icon(LucideBox);
 export const Braces = icon(LucideBraces);
 export const Brain = icon(LucideBrain);
 export const Calendar = icon(LucideCalendar);
@@ -191,6 +195,7 @@ export const Compass = icon(LucideCompass);
 export const Copy = icon(LucideCopy);
 export const CornerDownLeft = icon(LucideCornerDownLeft);
 export const CornerDownRight = icon(LucideCornerDownRight);
+export const Cpu = icon(LucideCpu);
 export const Dot = icon(LucideCircle);
 export const DownloadIcon = icon(LucideDownload);
 export const Eye = icon(LucideEye);
@@ -251,6 +256,7 @@ export const Scaling = icon(LucideScaling);
 export const ScanText = icon(LucideScanText);
 export const Search = icon(LucideSearch);
 export const SearchIcon = icon(LucideSearch);
+export const Send = icon(LucideSend);
 export const Server = icon(LucideServer);
 export const Settings = icon(LucideSettings);
 export const ShareUpRight = icon(LucideSquareArrowOutUpRight);
