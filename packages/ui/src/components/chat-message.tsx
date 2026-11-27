@@ -31,6 +31,12 @@ interface ChatMessageProps
    *  compact tightens bubble type and padding. Omitted, it follows the
    *  surrounding SizeProvider. */
   size?: SizeVariant;
+  /** The sender's avatar, beside the message on its own side (right for
+   *  `user`, left for `assistant`) and level with the top of the message. */
+  avatar?: ReactNode;
+  /** The message continues a run from the same sender: the avatar keeps its
+   *  space but isn't drawn, and the message sits closer to the one above. */
+  continued?: boolean;
 }
 
 // ─── ChatMessage ──────────────────────────────────────────────────────────
@@ -39,7 +45,19 @@ interface ChatMessageProps
 // lets earlier messages slide up smoothly when a new one is appended.
 const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
   (
-    { from, files, thumbnailSize = 64, time, actions, children, size, className, ...props },
+    {
+      from,
+      files,
+      thumbnailSize = 64,
+      time,
+      actions,
+      children,
+      size,
+      avatar,
+      continued = false,
+      className,
+      ...props
+    },
     ref
   ) => {
     const shape = useShape();
@@ -49,6 +67,7 @@ const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
     const isTouch = useTouchPrimary();
     // Timestamps are a user-message affordance; assistant replies show actions only.
     const showTime = isUser && time != null;
+    const hasAvatar = avatar != null;
 
     return (
       <motion.div
@@ -59,12 +78,34 @@ const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
         transition={spring.moderate}
         style={{ transformOrigin: isUser ? "bottom right" : "bottom left" }}
         className={cn(
-          "group flex max-w-[80%] flex-col gap-1.5",
-          isUser ? "items-end self-end" : "items-start self-start",
+          "group flex max-w-[80%] gap-2",
+          isUser ? "self-end" : "self-start",
+          isUser && hasAvatar && "flex-row-reverse",
+          continued && (compact ? "-mt-2" : "-mt-3"),
           className
         )}
         {...props}
       >
+        {hasAvatar && (
+          <div
+            data-slot="chat-message-avatar"
+            aria-hidden={continued || undefined}
+            className={cn(
+              "flex shrink-0",
+              compact ? "mt-1" : "mt-1.5",
+              continued && "invisible"
+            )}
+          >
+            {avatar}
+          </div>
+        )}
+        <div
+          data-slot="chat-message-content"
+          className={cn(
+            "flex min-w-0 flex-col gap-1.5",
+            isUser ? "items-end" : "items-start"
+          )}
+        >
         {files && files.length > 0 && (
           <div
             className={cn(
@@ -83,6 +124,7 @@ const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
         )}
         {children != null && children !== "" && (
           <div
+            data-slot="chat-message-body"
             className={cn(
               "whitespace-pre-wrap break-words",
               compact ? "py-1.5" : "py-2",
@@ -130,6 +172,7 @@ const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
             )}
           </div>
         )}
+        </div>
       </motion.div>
     );
   }
