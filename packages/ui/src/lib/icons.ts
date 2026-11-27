@@ -31,6 +31,7 @@ import {
   Circle as LucideCircle,
   CircleAlert as LucideCircleAlert,
   CircleCheck as LucideCircleCheck,
+  CircleHelp as LucideCircleHelp,
   CircleX as LucideCircleX,
   Clock as LucideClock,
   Code as LucideCode,
@@ -187,6 +188,7 @@ export const ChevronsUpDown = icon(LucideChevronsUpDown);
 export const Circle = icon(LucideCircle);
 export const CircleAlert = icon(LucideCircleAlert);
 export const CircleCheckIcon = icon(LucideCircleCheck);
+export const CircleHelp = icon(LucideCircleHelp);
 export const Clock = icon(LucideClock);
 export const Code = icon(LucideCode);
 export const Cog = icon(LucideCog);
