@@ -170,6 +170,11 @@ interface DialogContentProps extends HTMLAttributes<HTMLDivElement> {
    *  `<Dialog modal={false}>` — to scope a dialog to a bounded region, e.g. a
    *  docs preview. Defaults to the document body / full-viewport behaviour. */
   container?: HTMLElement | null;
+  /** Where focus lands when the dialog opens, passed to Base UI's popup.
+   *  Pass the panel's own ref so a radio or checkbox group in the body
+   *  doesn't open with its first row lit. Defaults to Base UI's first
+   *  tabbable element. */
+  initialFocus?: React.ComponentProps<typeof DialogPrimitive.Popup>["initialFocus"];
   /** The ✕ in the top-right corner. Drop it when the content has its own
    *  way out, e.g. a command menu that closes on Escape and on a pick.
    *  @default true */
@@ -181,7 +186,7 @@ interface DialogContentProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
-  ({ className, children, size = "sm", container, showCloseButton = true, position = "center", ...props }, ref) => {
+  ({ className, children, size = "sm", container, showCloseButton = true, position = "center", initialFocus, ...props }, ref) => {
     const icons = useIcons();
     const XIcon = icons.x;
     const shape = useShape();
@@ -238,6 +243,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
           }}
         />
         <DialogPrimitive.Popup
+          initialFocus={initialFocus}
           ref={ref}
           render={(popupProps, state) => {
             const exiting = state.transitionStatus === "ending";

@@ -265,10 +265,14 @@
 /* Local (PRE-118): modal panels (dialog, sheet, mobile drawer) sit on
    surface-1, so their see-through secondary fill uses the same alpha in both
    themes, one step above the panel. Dark's page-level --tint is tuned for
-   raised surfaces and reads as a bright pill on surface-1. */
+   raised surfaces and reads as a bright pill on surface-1. The selected and
+   hovered row fills (--active, --hover: radio and checkbox groups, menus,
+   tabs) take the same quiet step there (PRE-94). */
 .surface-modal {
   --tint: rgb(var(--overlay) / 0.08);
   --tint-hover: rgb(var(--overlay) / 0.065);
+  --active: var(--tint);
+  --hover: var(--tint-hover);
 }
 
 /* ============================================================================
