@@ -97,7 +97,7 @@
       "src/components/mobile-drawer.tsx": "The panel sits on surface-1 with its paired shadow and the backdrop blurs the page behind it, matching the dialog, with .surface-modal (PRE-118).",
       "src/components/command-menu.tsx": "Imports Tabs and TabsItem from #components/tabs (upstream f4867a54 renamed TabsSubtle to Tabs) until command-menu itself is synced; the rest of the file is still at the commit above.",
       "src/components/switch.tsx": "The on-state track reads var(--switch-on, #6B97FF) and var(--switch-on-hover, #5C89F2) instead of the literals, so globals.css sets it to the brand green (PRE-94).",
-      "src/components/chat-message.tsx": "Optional `avatar` slot beside the message (right for user, left for assistant) and `continued`, which keeps the avatar's space without drawing it and pulls the message closer, so a run from one sender shows its avatar once (PRE-115). The body carries data-slot=chat-message-body."
+      "src/components/chat-message.tsx": "Optional `avatar` slot beside the message (right for user, left for assistant), hidden when the nearest @container is under 320px, and `continued`, which keeps the avatar's space without drawing it and pulls the message closer, so a run from one sender shows its avatar once (PRE-115). The user bubble carries a 1px --border ring so it reads on the lighter surface ramp. The body carries data-slot=chat-message-body."
     },
     "stylesheet": "src/styles/globals.css follows the Fluid site app/globals.css at the same commit, minus site-only sections, plus the local .surface-modal tint scope (PRE-118), the Preprocess surface ramp and the --switch-on tokens (PRE-94).",
     "partialSync": {

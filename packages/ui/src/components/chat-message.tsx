@@ -32,7 +32,8 @@ interface ChatMessageProps
    *  surrounding SizeProvider. */
   size?: SizeVariant;
   /** The sender's avatar, beside the message on its own side (right for
-   *  `user`, left for `assistant`) and level with the top of the message. */
+   *  `user`, left for `assistant`) and level with the top of the message.
+   *  Hidden when the nearest `@container` is narrower than 320px. */
   avatar?: ReactNode;
   /** The message continues a run from the same sender: the avatar keeps its
    *  space but isn't drawn, and the message sits closer to the one above. */
@@ -91,7 +92,7 @@ const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
             data-slot="chat-message-avatar"
             aria-hidden={continued || undefined}
             className={cn(
-              "flex shrink-0",
+              "flex shrink-0 @max-xs:hidden",
               compact ? "mt-1" : "mt-1.5",
               continued && "invisible"
             )}
@@ -141,7 +142,7 @@ const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(
                     // word-by-word stream visibly reflows earlier words to new
                     // lines. Default (normal) wrapping appends left-to-right and
                     // stays put as the text grows.
-                    "text-pretty bg-[color-mix(in_oklab,var(--accent),var(--background)_45%)] text-foreground"
+                    "text-pretty border border-border bg-[color-mix(in_oklab,var(--accent),var(--background)_45%)] text-foreground"
                   )
                 : "text-foreground"
             )}
