@@ -69,21 +69,22 @@
 :root,
 .light,
 .dark {
-  /* Local: the colors are Preprocess's warm paper palette (the ladder darkens
-     step by step, light and dark), on Fluid's token structure. Shadows still
-     carry elevation. */
+  /* Local: the colors are Preprocess's warm paper palette on Fluid's token
+     structure (PRE-94). Like upstream, raised surfaces don't darken: in light,
+     surface-2 is the one sunken step and from surface-3 up every surface is as
+     light as or lighter than the page, so shadows and --border hairlines do
+     the separating. Dark keeps its direction (raised is lighter) in small
+     steps. */
   /* ── Surfaces (8-level ladder) ──
-     Light: 2 color steps (floor, sunken) then flat #FFFFFF; shadow does the
-     work. Dark: additive white-opacity ladder over #171717. Each surface
-     pairs 1:1 with a shadow recipe (--shadow-1 .. --shadow-8). */
+     Each surface pairs 1:1 with a shadow recipe (--shadow-1 .. --shadow-8). */
   --surface-1: light-dark(#fbf7f0, #15120f);
-  --surface-2: light-dark(#f3efe7, #1b1815);
-  --surface-3: light-dark(#ece7de, #211e1b);
-  --surface-4: light-dark(#e4dfd4, #282421);
-  --surface-5: light-dark(#ddd7cb, #2e2b28);
-  --surface-6: light-dark(#d5cfc2, #35312e);
-  --surface-7: light-dark(#cec7b9, #3c3835);
-  --surface-8: light-dark(#c6bfb0, #423f3c);
+  --surface-2: light-dark(#f6f2eb, #1b1815);
+  --surface-3: light-dark(#fcf9f4, #1f1c19);
+  --surface-4: light-dark(#fdfbf7, #221f1c);
+  --surface-5: light-dark(#fefcf9, #25221f);
+  --surface-6: light-dark(#fffdfa, #292623);
+  --surface-7: light-dark(#fffefb, #2c2926);
+  --surface-8: light-dark(#fffefc, #2f2c29);
 
   /* ── Semantic tokens ── */
   --background: var(--surface-1);
@@ -128,6 +129,12 @@
      the single theming point. The literal fallback keeps registry components
      self-contained when installed into projects without the variable. */
   --focus-ring: var(--ring);
+
+  /* ── Switch on-state ──
+     Local (PRE-94): the brand green instead of Fluid's #6B97FF, read by
+     switch.tsx as var(--switch-on, #6B97FF). */
+  --switch-on: #3a9670;
+  --switch-on-hover: #1f6b55;
 
   /* ── Alpha checkerboard (color-picker swatches) ── */
   --checker-a: light-dark(#bbbbbb, #1f1f1f);
