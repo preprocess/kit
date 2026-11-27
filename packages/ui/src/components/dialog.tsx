@@ -24,11 +24,9 @@ import { spring, exitFallbackMs } from "#lib/springs";
 import { omit } from "#lib/omit";
 import { useShape } from "#lib/shape-context";
 import { useSize, useSizeVariant, typeClass } from "#lib/size-context";
-import { SurfaceProvider, useSurface } from "#lib/surface-context";
+import { SurfaceProvider } from "#lib/surface-context";
 import { surfaceClasses } from "#lib/surface-classes";
 import { Button } from "#components/button";
-
-const DIALOG_OFFSET = 4;
 
 interface DialogProps {
   open?: boolean;
@@ -187,8 +185,6 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
     const icons = useIcons();
     const XIcon = icons.x;
     const shape = useShape();
-    const substrate = useSurface();
-    const dialogLevel = Math.min(substrate + DIALOG_OFFSET, 8);
     // The size ladder narrows the dialog one notch in compact regions —
     // width only, the padding stays put (see /docs/sizes).
     const compact = useSize().variant === "compact";
@@ -232,7 +228,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
                 {...rest}
                 className={cn(
                   container ? "absolute" : "fixed",
-                  "inset-0 z-50 bg-black/40 dark:bg-black/80"
+                  "inset-0 z-50 bg-black/40 dark:bg-black/80 supports-backdrop-filter:backdrop-blur-sm"
                 )}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: exiting ? 0 : 1 }}
@@ -274,7 +270,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
                   container ? "absolute" : "fixed",
                   "left-1/2 z-50 w-[calc(100%-2rem)]",
                   position === "top" ? "top-[12dvh]" : "top-1/2",
-                  surfaceClasses(dialogLevel),
+                  surfaceClasses(1),
                   "p-6 focus:outline-none",
                   size === "sm" && (compact ? "max-w-[360px]" : "max-w-[400px]"),
                   size === "lg" && (compact ? "max-w-[480px]" : "max-w-[540px]"),
@@ -298,7 +294,7 @@ const DialogContent = forwardRef<HTMLDivElement, DialogContentProps>(
                   if (exiting) exitActionsRef?.current?.unmount();
                 }}
               >
-                <SurfaceProvider value={dialogLevel}>
+                <SurfaceProvider value={1}>
                   {children}
                   {showCloseButton && (
                     <DialogPrimitive.Close
