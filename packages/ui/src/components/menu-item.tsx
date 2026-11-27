@@ -125,6 +125,9 @@ export interface MenuItemProps extends HTMLAttributes<HTMLDivElement> {
   label: string;
   /** Local: a muted note after the label, like a count ("12 cases"). */
   detail?: string;
+  /** Local: a muted glyph after the label, like ArrowUpRight on a row that
+   *  leaves the app. */
+  trailingIcon?: IconComponent;
   index: number;
   /** When a boolean, the item is a radio-style option (role="menuitemradio"
    *  with aria-checked). When undefined, it is a plain action item
@@ -143,6 +146,7 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
       icon: Icon,
       label,
       detail,
+      trailingIcon: TrailingIcon,
       index,
       checked,
       onSelect,
@@ -247,6 +251,14 @@ const MenuItem = forwardRef<HTMLDivElement, MenuItemProps>(
           >
             {detail}
           </span>
+        ) : null}
+        {TrailingIcon ? (
+          <TrailingIcon
+            aria-hidden="true"
+            size={sizeClasses.icon}
+            strokeWidth={1.5}
+            className="shrink-0 text-muted-foreground"
+          />
         ) : null}
         {/* initial={false}: a row checked at mount shows the finished
             check instead of drawing it, so default selections don't
