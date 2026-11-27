@@ -255,6 +255,15 @@
   --shadow-8: var(--shadow-dark-8);
 }
 
+/* Local (PRE-118): modal panels (dialog, sheet, mobile drawer) sit on
+   surface-1, so their see-through secondary fill uses the same alpha in both
+   themes, one step above the panel. Dark's page-level --tint is tuned for
+   raised surfaces and reads as a bright pill on surface-1. */
+.surface-modal {
+  --tint: rgb(var(--overlay) / 0.08);
+  --tint-hover: rgb(var(--overlay) / 0.065);
+}
+
 /* ============================================================================
    3. TAILWIND THEME MAPPING
 ============================================================================ */
