@@ -7,6 +7,7 @@
  * and `strokeWidth` props still win.
  */
 import {
+  Activity as LucideActivity,
   ArrowDown as LucideArrowDown,
   ArrowLeft as LucideArrowLeft,
   ArrowRight as LucideArrowRight,
@@ -162,6 +163,7 @@ function icon(glyph: LucideIcon) {
   return Icon;
 }
 
+export const Activity = icon(LucideActivity);
 export const AiDeveloper = icon(LucideBot);
 export const ArrowDownIcon = icon(LucideArrowDown);
 export const ArrowLeft = icon(LucideArrowLeft);
