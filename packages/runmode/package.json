@@ -1,6 +1,6 @@
 {
   "name": "@preprocess/runmode",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "The one reader of the deployment variable that tells our cloud from a self-hosted install.",
   "author": "Preprocess, Inc.",
   "license": "MIT",
