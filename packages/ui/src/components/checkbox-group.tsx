@@ -308,8 +308,8 @@ const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItemProps>(
         >
           {/* Border */}
           {/* Checked: the border turns transparent and the check alone marks
-              the state. Unchecked: hover or focus darkens it from border to
-              neutral-400 (neutral-500 dark) over 80ms. */}
+              the state. Unchecked: hover or focus darkens it from
+              control-border to control-border-hover over 80ms. */}
           <div
             className={cn(
               "absolute inset-0 border-solid transition-all duration-80",
@@ -317,8 +317,8 @@ const CheckboxItem = forwardRef<HTMLDivElement, CheckboxItemProps>(
               checked
                 ? "border-[1.5px] border-transparent"
                 : isActive
-                ? "border-[1.5px] border-neutral-400 dark:border-neutral-500"
-                : "border-[1.5px] border-border"
+                ? "border-[1.5px] border-control-border-hover"
+                : "border-[1.5px] border-control-border"
             )}
           />
           {/* Check mark */}
